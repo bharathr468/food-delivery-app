@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model dishes {
+  id           Int    @id @default(autoincrement())
+  restaurantId Int    @map("restaurant_id")
+  name         String
+  image        String
+  allergens    String // comma separated list of allergens
+  price        Int
+}
+
+model orders {
+  id              Int       @id @default(autoincrement())
+  deliveryAddress String    @map("delivery_address")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  userId          Int       @map("user_id")
+  status          String
+  eta             DateTime?
+}
+
+model order_items {
+  id       Int @id @default(autoincrement())
+  orderId  Int @map("order_id")
+  dishId   Int @map("dish_id")
+  quantity Int
+}
+
+model restaurants {
+  id       Int    @id @default(autoincrement())
+  name     String
+  image    String
+  about    String
+  location String
+  cuisine  String
+}
+
+model users {
+  id       Int    @id @default(autoincrement())
+  username String
+  email    String @unique
+  password String
+}
+
+model sessions {
+  id     Int    @id @default(autoincrement())
+  userId Int    @map("user_id")
+  token  String
+}

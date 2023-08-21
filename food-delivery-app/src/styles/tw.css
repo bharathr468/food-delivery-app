@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--primary: #fe6601;
+		--bg: #121212;
+	}
+
+	* {
+		@apply transition-all delay-[50] ease-out;
+	}
+
+	table,
+	th,
+	tr,
+	td {
+		@apply border-dashed border-2 border-black text-center p-4;
+	}
+
+	body {
+		font-smooth: auto;
+		overflow-x: hidden;
+		scroll-behavior: smooth;
+		scrollbar-width: auto;
+	}
+
+	button:hover {
+		@apply -translate-y-1;
+	}
+}
+
+.shadow {
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	border: 0 solid #fff;
+	position: relative;
+	border-radius: 16px;
+	background-color: var(--primary);
+}
